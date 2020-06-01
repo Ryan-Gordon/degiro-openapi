@@ -20,6 +20,16 @@ class DegiroService(object):
         except Exception as exc:
             return str(exc), 401
 
+    def get_portfolio(self):
+        try:
+            degiro = degiroapi.DeGiro()
+            resp = degiro.login(*self.parse_basic_auth_creds())
+            portfolio = degiro.getdata(degiroapi.Data.Type.PORTFOLIO)
+            return portfolio, 200
+        except Exception as exc:
+            return str(exc), 401
+
+    
     def parse_basic_auth_creds(self):
         split = connexion.request.headers["Authorization"].split(' ')
         if split[0].strip().lower() == 'basic':
@@ -30,3 +40,5 @@ class DegiroService(object):
         else:
           raise DecodeError
         return username, password
+
+    

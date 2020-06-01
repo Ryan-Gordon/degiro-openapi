@@ -15,4 +15,8 @@ def login(data_provider, body) -> str:
 def get_cash_funds(data_provider) -> str:
     return data_provider.get_cash_funds()
 
+@inject(data_provider=DegiroService)
+def get_portfolio(data_provider) -> str:
+    return data_provider.get_portfolio()
+
 
