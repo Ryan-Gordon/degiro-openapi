@@ -1,0 +1,3 @@
+
+class DegiroService(object):
+    pass
