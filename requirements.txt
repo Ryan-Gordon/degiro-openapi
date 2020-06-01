@@ -1,0 +1,5 @@
+Flask
+connexion==2.7.0
+Flask-Injector==0.10.0
+injector==0.12.0
+tornado
