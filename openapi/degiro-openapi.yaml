@@ -10,11 +10,19 @@ info:
 servers:
   - url: http://localhost:2025/v1.0
 
+tags:
+  - name: Degiro API Client
+    description: calls which are made with an API client which encapsulates one or more calls to perform its actions
+  - name: Degiro REST API
+    description: Singular calls which are made directly to DeGiros API.
+
 paths:
   /login:
     post:
       summary: Perform a login request to the Degiro API. Returns a session token.
       operationId: api.degiro-api.login
+      tags: 
+        - Degiro API Client
       requestBody:
         description: Body containing Login Info
         required: true
@@ -29,11 +37,25 @@ paths:
     get:
       summary: Get a list of cash funds (if multiple) and the cash in them
       operationId: api.degiro-api.get_cash_funds
+      tags: 
+        - Degiro API Client
       security:
         - basic: []
       responses:
         "200":
           description: A list of cash funds
+  /portfolio:
+    get:
+      summary: Returns a list of products in your portfolio untouched. Products are denoted by their Degiro ID. See portfoliodetail for more product context
+      operationId: api.degiro-api.get_portfolio
+      tags: 
+        - Degiro API Client
+      security:
+        - basic: []
+      responses:
+        "200":
+          description: A list of portfolio products
+      
 components:
   schemas:
     Login: # Schema name
