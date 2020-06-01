@@ -8,7 +8,7 @@ from flask import request, Response
 
 '''
 @inject(data_provider=DegiroService)
-def login(data_provider) -> str:
-    return data_provider.login()
+def login(data_provider, body) -> str:
+    return data_provider.login(body)
 
 

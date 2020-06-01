@@ -17,7 +17,7 @@ def configure(binder: Binder) -> Binder:
 #Redefine application as a connexion app. 
 application = connexion.App(__name__, specification_dir='openapi/')
 
-# Setip RestyResolver and the OpenAPI docs
+# Setup RestyResolver and the OpenAPI docs
 application.add_api('degiro-openapi.yaml', resolver=RestyResolver('api'), arguments={'title': 'Degiro OpenAPI'})
 
 #FlaskInjector Setup defined after configure
