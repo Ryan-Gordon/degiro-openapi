@@ -36,4 +36,4 @@ components:
           type: string
       example: # Object-level example
         username: JohnDoe123
-        name: improbablynotsecure
+        password: improbablynotsecure
