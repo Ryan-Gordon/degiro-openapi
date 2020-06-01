@@ -11,4 +11,8 @@ from flask import request, Response
 def login(data_provider, body) -> str:
     return data_provider.login(body)
 
+@inject(data_provider=DegiroService)
+def get_cash_funds(data_provider) -> str:
+    return data_provider.get_cash_funds()
+
 
