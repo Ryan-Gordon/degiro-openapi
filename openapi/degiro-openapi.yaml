@@ -1,0 +1,39 @@
+openapi: "3.0.0"
+
+info:
+  title: "Degiro Trader API"
+  version: "1.0"
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: http://localhost:2025/v1.0
+
+paths:
+  /login:
+    post:
+      summary: Perform a login request to the Degiro API. Returns a session token.
+      operationId: api.degiro-api.login
+      requestBody:
+        description: Body containing Login Info
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Login"
+      responses:
+        "200":
+          description: Successfully logged in
+components:
+  schemas:
+    Login: # Schema name
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      example: # Object-level example
+        username: JohnDoe123
+        name: improbablynotsecure
